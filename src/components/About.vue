@@ -165,6 +165,27 @@ export default {
 }
 .sound-card:hover .sound-toggal-music {
   display: block;
+  background-color: rgba(110, 122, 92, 0.7);
+}
+
+.sound-toggal-music {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.sound-card:hover .sound-toggal-music {
+  visibility: visible;
+  opacity: 1;
 }
 </style>
 
