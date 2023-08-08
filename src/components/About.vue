@@ -1,6 +1,92 @@
 <template>
+      <!-- <div class="container">
+        <div class="row">
+            <div class="col-lg-3 sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="" alt="">
+  
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            Some quick example text to build on 
+                            the card title and make up the bulk 
+                            of the card's content.
+                        </p>
+  
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            Card link
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="far fa-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="" alt="">
+  
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            Some quick example text to build on the 
+                            card title and make up the bulk of the 
+                            card's content.
+                        </p>
+                          
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            Card link
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="far fa-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="" alt="">
+  
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            Some quick example text to build on the 
+                            card title and make up the bulk of the 
+                            card's content.
+                        </p>
+                          
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            Card link
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="far fa-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="" alt="">
+  
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            Some quick example text to build on the 
+                            card title and make up the bulk of the 
+                            card's content.
+                        </p>
+                          
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            Card link
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">
+                            <i class="far fa-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div> -->
     <b-container>
-      <b-row>
+      <b-row class="justify-content-center">
         <b-col sm="3" class="sound-left-sidebar">
           <b-card>
             <b-card-text><i class="fa-solid fa-house" /> Home </b-card-text>
@@ -18,28 +104,28 @@
           <div>
               <div>
                 <b-card-group>
-                  <b-card sm="2"  class="sound-card">
+                  <b-card  class="sound-card col-6">
                     <b-card-img src="https://picsum.photos/400/400/?image=20" alt="Image" class="rounded-0"></b-card-img>
                     <b-card-text>
                       This card has supporting text below as a natural lead-in to additional content.
                     </b-card-text>
                     <button v-on:click="toggalMusic({'id':'1'})" class="sound-toggal-music">play music</button>
                   </b-card>
-                  <b-card sm="2" class="sound-card">
+                  <b-card class="sound-card col-6">
                     <b-card-img src="https://picsum.photos/400/400/?image=43" alt="Image" class="rounded-0"></b-card-img>
                     <b-card-text>
                       This card has supporting text below as a natural lead-in to additional content.
                     </b-card-text>
                     <button v-on:click="toggalMusic({'id':'2'})"  class="sound-toggal-music">play music</button>
                   </b-card>
-                  <b-card sm="2" class="sound-card">
+                  <b-card class="sound-card col-6">
                     <b-card-img src="https://picsum.photos/400/400/?image=56" alt="Image" class="rounded-0"></b-card-img>
                     <b-card-text>
                       This card has supporting text below as a natural lead-in to additional content.
                     </b-card-text>
                     <button v-on:click="toggalMusic({'id':'3'})" class="sound-toggal-music">play music</button>
                   </b-card>
-                  <b-card sm="2" class="sound-card">
+                  <b-card class="sound-card col-6">
                     <b-card-img src="https://picsum.photos/400/400/?image=56" alt="Image" class="rounded-0"></b-card-img>
                     <b-card-text>
                       This card has supporting text below as a natural lead-in to additional content.
@@ -65,22 +151,22 @@ export default {
   },
   methods: { 
       toggalMusic(data) {
-        let musicSrc = require(`@/assets/tone/${data.id}.mp3`);
-        if(!this.music.src.includes(musicSrc)){
-          console.log(this.music.src,'music.Src');
-          console.log(musicSrc,'musicSrc');
-            // let musicSrc = require(`@/assets/tone/${data.id}.mp3`);
-            this.music.src = musicSrc
-            this.music.play();
-        } else if (!this.music.paused){
-          console.log(this.music.src,'src');
-          this.music.pause();
-          // this.music.currentTime = 0;
-        } else if (this.music.src) {
-            this.music.play();
-          console.log(this.music.currentTime);
-          console.log(this.music.duration);
-        }
+        // let musicSrc = require(`@/assets/tone/${data.id}.mp3`);
+        // if(!this.music.src.includes(musicSrc)){
+        //   console.log(this.music.src,'music.Src');
+        //   console.log(musicSrc,'musicSrc');
+        //     // let musicSrc = require(`@/assets/tone/${data.id}.mp3`);
+        //     this.music.src = musicSrc
+        //     this.music.play();
+        // } else if (!this.music.paused){
+        //   console.log(this.music.src,'src');
+        //   this.music.pause();
+        //   // this.music.currentTime = 0;
+        // } else if (this.music.src) {
+        //     this.music.play();
+        //   console.log(this.music.currentTime);
+        //   console.log(this.music.duration);
+        // }
 
         // if(!this.music.paused){
         //   this.music.pause();
@@ -131,6 +217,40 @@ export default {
           //   let duration = music.loaded();
           //   console.log(duration,'loaded');
           // });
+
+          const URL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3';
+
+          const ctx = new AudioContext();
+          let audio;
+          const fetchSong = async (path) => {
+              const xhr = await fetch(path);
+              const arrayBuffer = await xhr.arrayBuffer();
+              return ctx.decodeAudioData(arrayBuffer);
+          };
+
+          // const fetchSong = (path, decodedAudio) =>fetch(path)
+          //                                 .then((res) => res.arrayBuffer())
+          //                                 .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
+          //                                 .then(decodedAudio);  // Resolve with callback
+
+          
+          // fetch(URL)
+          //   .then(data => data.arrayBuffer())
+          //   .then(arrayBuffer => ctx.decodeAudioData(arrayBuffer))
+          //   .then(decodedAudio => {
+          //     audio = decodedAudio;
+          //   })
+
+          function playback() {
+            const songDataPromise = fetchSong(URL);   // Promise {<pending>}
+            songDataPromise.then((audioBuffer) => {
+                const playSound = ctx.createBufferSource();
+                playSound.buffer = audioBuffer;
+                playSound.connect(ctx.destination);
+                playSound.start(ctx.currentTime);
+            });
+          }
+          playback();
       }
   }
 }
@@ -153,7 +273,7 @@ export default {
   background-color: #93d14c;
 }
 .row{
-    overflow: hidden;
+    /* overflow: hidden; */
     max-height: 650px;
 }
 .card{
@@ -188,20 +308,3 @@ export default {
   opacity: 1;
 }
 </style>
-
-
-<!-- <button onclick="playAudio()" type="button">Play Audio</button>
-<button onclick="pauseAudio()" type="button">Pause Audio</button> 
-
-<script>
-let x = new Audio('horse.mp3');
-//var x = document.getElementById("myAudio"); 
-
-function playAudio() { 
-  x.play(); 
-} 
-
-function pauseAudio() { 
-  x.pause(); 
-} 
-</script> -->
