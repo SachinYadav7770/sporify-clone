@@ -1,90 +1,4 @@
 <template>
-      <!-- <div class="container">
-        <div class="row">
-            <div class="col-lg-3 sm-6">
-                <div class="card">
-                    <img class="card-img-top" src="" alt="">
-  
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            Some quick example text to build on 
-                            the card title and make up the bulk 
-                            of the card's content.
-                        </p>
-  
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            Card link
-                        </a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
-                            <i class="far fa-heart"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 sm-6">
-                <div class="card">
-                    <img class="card-img-top" src="" alt="">
-  
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            Some quick example text to build on the 
-                            card title and make up the bulk of the 
-                            card's content.
-                        </p>
-                          
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            Card link
-                        </a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
-                            <i class="far fa-heart"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 sm-6">
-                <div class="card">
-                    <img class="card-img-top" src="" alt="">
-  
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            Some quick example text to build on the 
-                            card title and make up the bulk of the 
-                            card's content.
-                        </p>
-                          
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            Card link
-                        </a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
-                            <i class="far fa-heart"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 sm-6">
-                <div class="card">
-                    <img class="card-img-top" src="" alt="">
-  
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            Some quick example text to build on the 
-                            card title and make up the bulk of the 
-                            card's content.
-                        </p>
-                          
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            Card link
-                        </a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">
-                            <i class="far fa-heart"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div> -->
     <b-container>
       <b-row class="justify-content-center">
         <b-col sm="3" class="sound-left-sidebar">
@@ -151,72 +65,6 @@ export default {
   },
   methods: { 
       toggalMusic(data) {
-        // let musicSrc = require(`@/assets/tone/${data.id}.mp3`);
-        // if(!this.music.src.includes(musicSrc)){
-        //   console.log(this.music.src,'music.Src');
-        //   console.log(musicSrc,'musicSrc');
-        //     // let musicSrc = require(`@/assets/tone/${data.id}.mp3`);
-        //     this.music.src = musicSrc
-        //     this.music.play();
-        // } else if (!this.music.paused){
-        //   console.log(this.music.src,'src');
-        //   this.music.pause();
-        //   // this.music.currentTime = 0;
-        // } else if (this.music.src) {
-        //     this.music.play();
-        //   console.log(this.music.currentTime);
-        //   console.log(this.music.duration);
-        // }
-
-        // if(!this.music.paused){
-        //   this.music.pause();
-        //   // this.music.currentTime = 0;
-        // }else{
-        //     let musicSrc = require(`@/assets/tone/${data.id}.mp3`);
-        //     this.music.src = musicSrc
-        //     this.music.play();
-
-        // }
-          // this.music.play();
-
-          
-          // if(this.playing == true){
-          //   this.music.pause();
-          //   // this.playing != this.playing;
-          //   // console.log(this.playing);
-          // }else{
-          //   let musicSrc = require(`@/assets/tone/${data.id}.mp3`);
-          //   this.music.src = musicSrc
-          //   this.music.play();
-          //   // console.log(this.playing);
-          // }
-          // console.log(this.music.duration,'duration');
-          // // console.log(this.music.duration,'duration');
-          // this.playing = !this.playing;
-          // music.addEventListener("loadeddata", () => {
-          //   let duration = music.duration;
-          //   console.log(duration);
-          // });
-          // music.addEventListener("canplaythrough", () => {
-          //   let duration = music.load();
-          //   console.log(duration,'canplaythrough');
-          // });
-          // music.addEventListener("timeupdate", () => {
-          //   let duration = music.seeking
-          //   console.log(duration,'timeupdate');
-          // });
-          // music.addEventListener("ended", () => {
-          //   let duration = music.ended;
-          //   console.log(duration,'ended');
-          // });
-          // music.addEventListener("waiting", () => {
-          //   let duration = music.audioWaiting();
-          //   console.log(duration,'waiting');
-          // });
-          // music.addEventListener("playing", () => {
-          //   let duration = music.loaded();
-          //   console.log(duration,'loaded');
-          // });
 
           const URL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3';
 
@@ -227,20 +75,6 @@ export default {
               const arrayBuffer = await xhr.arrayBuffer();
               return ctx.decodeAudioData(arrayBuffer);
           };
-
-          // const fetchSong = (path, decodedAudio) =>fetch(path)
-          //                                 .then((res) => res.arrayBuffer())
-          //                                 .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
-          //                                 .then(decodedAudio);  // Resolve with callback
-
-          
-          // fetch(URL)
-          //   .then(data => data.arrayBuffer())
-          //   .then(arrayBuffer => ctx.decodeAudioData(arrayBuffer))
-          //   .then(decodedAudio => {
-          //     audio = decodedAudio;
-          //   })
-
           function playback() {
             const songDataPromise = fetchSong(URL);   // Promise {<pending>}
             songDataPromise.then((audioBuffer) => {
