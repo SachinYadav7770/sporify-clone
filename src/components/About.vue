@@ -66,7 +66,8 @@ export default {
   methods: { 
       toggalMusic(data) {
 
-          const URL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3';
+          // const URL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3';
+          const URL = require(`@/assets/tone/${data.id}.mp3`);
 
           const ctx = new AudioContext();
           // let audio;
@@ -79,10 +80,17 @@ export default {
             const songDataPromise = fetchSong(URL);
 
             songDataPromise.then((audioBuffer) => {
+                console.log(ctx.state);
                 const playSound = ctx.createBufferSource();
-                playSound.buffer = audioBuffer;
-                playSound.connect(ctx.destination);
-                playSound.start(ctx.currentTime);
+                if(false && ctx.state == 'running'){
+                  playSound.pause(ctx.currentTime);
+                }else{
+                  // const playSound = ctx.createBufferSource();
+                  playSound.buffer = audioBuffer;
+                  playSound.connect(ctx.destination);
+                  playSound.start(ctx.currentTime);
+                  // playSound.stop(ctx.currentTime + 1);
+                }
             });
           }
           playback();
