@@ -69,14 +69,15 @@ export default {
           const URL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3';
 
           const ctx = new AudioContext();
-          let audio;
+          // let audio;
           const fetchSong = async (path) => {
               const xhr = await fetch(path);
               const arrayBuffer = await xhr.arrayBuffer();
               return ctx.decodeAudioData(arrayBuffer);
           };
           function playback() {
-            const songDataPromise = fetchSong(URL);   // Promise {<pending>}
+            const songDataPromise = fetchSong(URL);
+
             songDataPromise.then((audioBuffer) => {
                 const playSound = ctx.createBufferSource();
                 playSound.buffer = audioBuffer;
