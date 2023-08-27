@@ -66,7 +66,7 @@ export default {
   },
   methods: { 
     createSound(buffer, context) {
-        var sourceNode = undefined,
+        var sourceNode = null,
             startedAt = 0,
             pausedAt = 0,
             playing = false;
@@ -104,6 +104,12 @@ export default {
         var getPlaying = function() {
             return playing;
         };
+        
+        var replay = function() {
+          startedAt = 0;
+          pausedAt = 0;
+          play();
+        };
 
         var getCurrentTime = function() {
             if(pausedAt) {
@@ -125,7 +131,8 @@ export default {
             getPlaying: getPlaying,
             play: play,
             pause: pause,
-            stop: stop
+            stop: stop,
+            replay: replay
         };
     },
 
@@ -140,8 +147,14 @@ export default {
               return ctx.decodeAudioData(arrayBuffer);
           };
           function playback() {
-            if(vueData.currentPlayingData.hasOwnProperty('playSound') && vueData.currentPlayingData.playSound.getPlaying() && vueData.currentPlayingData.hasOwnProperty('data') && vueData.currentPlayingData.data.id == data.id){
-              vueData.currentPlayingData.playSound.pause()
+            if(vueData.currentPlayingData.hasOwnProperty('playSound') && vueData.currentPlayingData.hasOwnProperty('data') && vueData.currentPlayingData.data.id == data.id){
+              if(vueData.currentPlayingData.playSound.getCurrentTime() > vueData.currentPlayingData.playSound.getDuration()){
+                vueData.currentPlayingData.playSound.replay();
+              }else if(vueData.currentPlayingData.playSound.getPlaying()){
+                vueData.currentPlayingData.playSound.pause();
+              }else{
+                vueData.currentPlayingData.playSound.play();
+              }
             }else{
               const songDataPromise = fetchSong(URL);
               vueData.currentPlayingData.data = data;
