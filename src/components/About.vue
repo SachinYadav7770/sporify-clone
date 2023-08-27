@@ -164,8 +164,7 @@ export default {
               songDataPromise.then((audioBuffer) => {
                   vueData.currentPlayingData.data = data;
                   vueData.currentPlayingData.playSound = vueData.createSound(audioBuffer,ctx);
-                  vueData.currentPlayingData.playSound.play()
-                  console.log(vueData.currentPlayingData.playSound);
+                  vueData.currentPlayingData.playSound.play();
               });
             }
           }
