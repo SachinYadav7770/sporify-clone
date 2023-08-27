@@ -148,9 +148,9 @@ export default {
           };
           function playback() {
             if(vueData.currentPlayingData.hasOwnProperty('playSound') && vueData.currentPlayingData.hasOwnProperty('data') && vueData.currentPlayingData.data.id == data.id){
-              if(vueData.currentPlayingData.playSound.getCurrentTime() > vueData.currentPlayingData.playSound.getDuration()){
+              if(vueData.currentPlayingData.playSound.getCurrentTime() > vueData.currentPlayingData.playSound.getDuration()){ // check current music is end
                 vueData.currentPlayingData.playSound.replay();
-              }else if(vueData.currentPlayingData.playSound.getPlaying()){
+              }else if(vueData.currentPlayingData.playSound.getPlaying()){ // check current music is playing
                 vueData.currentPlayingData.playSound.pause();
               }else{
                 vueData.currentPlayingData.playSound.play();
