@@ -60,12 +60,77 @@ export default {
     return {
       msg: 'Welcome to Your About Page',
       playing : false,
+      currentPlayingData : {},
       music : new Audio()
     }
   },
   methods: { 
-      toggalMusic(data) {
+  //   createSound(buffer, context) {
+  //     var sourceNode = null,
+  //         startedAt = 0,
+  //         pausedAt = 0,
+  //         playing = false;
 
+  //     var play = function() {
+  //         var offset = pausedAt;
+
+  //         sourceNode = context.createBufferSource();
+  //         sourceNode.connect(context.destination);
+  //         sourceNode.buffer = buffer;
+  //         sourceNode.start(0, offset);
+
+  //         startedAt = context.currentTime - offset;
+  //         pausedAt = 0;
+  //         playing = true;
+  //     };
+
+  //     var pause = function() {
+  //         var elapsed = context.currentTime - startedAt;
+  //         stop();
+  //         pausedAt = elapsed;
+  //     };
+
+  //     var stop = function() {
+  //         if (sourceNode) {          
+  //             sourceNode.disconnect();
+  //             sourceNode.stop(0);
+  //             sourceNode = null;
+  //         }
+  //         pausedAt = 0;
+  //         startedAt = 0;
+  //         playing = false;
+  //     };
+
+  //     var getPlaying = function() {
+  //         return playing;
+  //     };
+
+  //     var getCurrentTime = function() {
+  //         if(pausedAt) {
+  //             return pausedAt;
+  //         }
+  //         if(startedAt) {
+  //             return context.currentTime - startedAt;
+  //         }
+  //         return 0;
+  //     };
+
+  //     var getDuration = function() {
+  //       return buffer.duration;
+  //     };
+
+  //     return {
+  //         getCurrentTime: getCurrentTime,
+  //         getDuration: getDuration,
+  //         getPlaying: getPlaying,
+  //         play: play,
+  //         pause: pause,
+  //         stop: stop
+  //     };
+  // }
+
+      toggalMusic(data) {
+          const vueData = this;
           // const URL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3';
           const URL = require(`@/assets/tone/${data.id}.mp3`);
 
@@ -77,21 +142,35 @@ export default {
               return ctx.decodeAudioData(arrayBuffer);
           };
           function playback() {
-            const songDataPromise = fetchSong(URL);
-
-            songDataPromise.then((audioBuffer) => {
-                console.log(ctx.state);
-                const playSound = ctx.createBufferSource();
-                if(false && ctx.state == 'running'){
-                  playSound.pause(ctx.currentTime);
-                }else{
-                  // const playSound = ctx.createBufferSource();
+            console.log(vueData.currentPlayingData);
+            if(vueData.currentPlayingData.hasOwnProperty('data') && vueData.currentPlayingData.data.id == data.id){
+              console.log(JSON.stringify(vueData.currentPlayingData.playSound) + 'dfjkl');
+              vueData.currentPlayingData.playSound.stop(ctx.currentTime);
+            }else{
+              const songDataPromise = fetchSong(URL);
+              vueData.currentPlayingData.data = data;
+              songDataPromise.then((audioBuffer) => {
+                  const playSound = ctx.createBufferSource();
                   playSound.buffer = audioBuffer;
                   playSound.connect(ctx.destination);
                   playSound.start(ctx.currentTime);
-                  // playSound.stop(ctx.currentTime + 1);
-                }
-            });
+                  vueData.currentPlayingData.playSound = playSound;
+              });
+            }
+            // console.log(vueData.currentPlayingData.id);
+            // songDataPromise.then((audioBuffer) => {
+            //     console.log(ctx.state);
+            //     const playSound = ctx.createBufferSource();
+            //     if(false && ctx.state == 'running'){
+            //       playSound.pause(ctx.currentTime);
+            //     }else{
+            //       // const playSound = ctx.createBufferSource();
+            //       playSound.buffer = audioBuffer;
+            //       playSound.connect(ctx.destination);
+            //       playSound.start(ctx.currentTime);
+            //       // playSound.stop(ctx.currentTime + 1);
+            //     }
+            // });
           }
           playback();
       }
